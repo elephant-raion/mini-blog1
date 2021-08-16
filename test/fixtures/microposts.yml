@@ -4,3 +4,9 @@ most_recent:
   content: "Writing a short test"
   created_at: <%= Time.zone.now %>
 
+<% 30.times do |n| %>
+micropost_<%= n %>:
+  content: <%= Faker::Lorem.sentence(word_count: 5) %>
+  created_at: <%= 42.days.ago %>
+<% end %>
+
