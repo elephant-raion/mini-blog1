@@ -28,6 +28,9 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+# Use devise to make authenticated users
+gem 'devise'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
