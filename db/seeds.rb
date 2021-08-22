@@ -12,7 +12,7 @@ user = User.new(
 )
 user.save
 
-20.times do
+50.times do
   content = Faker::Lorem.sentence(word_count: 3)
   user.microposts.create!(content: content)
 end
