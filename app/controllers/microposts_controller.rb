@@ -13,7 +13,7 @@ class MicropostsController < ApplicationController
   end
 
   def index
-    @feed_items = Micropost.all.paginate(page: params[:page])
+    @feed_items = current_user.microposts.paginate(page: params[:page])
   end
 
   private
