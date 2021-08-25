@@ -8,7 +8,7 @@
 yamada:
   name: yamada
   email: hoge@google.com
-  encrypted_password: foobarfoobar
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'foobarfoobar') %>
   profile: I work for my life.
   url: https://github.com/hogehoge
 
