@@ -7,8 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.new(
+  name: "example",
   email: "example@example.com",
-  password: "foobarfoobar"
+  password: "foobarfoobar",
+  profile: "I work for my life.",
+  url: "https://github.com/hogehoge"
 )
 user.save
 
