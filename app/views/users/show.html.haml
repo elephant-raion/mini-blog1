@@ -1,0 +1,21 @@
+%h1
+  My page
+%div.row
+  %div.col-md-6.col-md-offset-3
+    %div.card
+      %div.card-header 
+        %strong 名前
+      %ul.list-group.list-group-flush
+        %li.list-group-item= @user.name
+      %div.card-header
+        %strong メールアドレス
+      %ul.list-group.list-group-flush
+        %li.list-group-item= @user.email
+      %div.card-header
+        %strong プロフィール
+      %ul.list-group.list-group-flush
+        %li.list-group-item= @user.profile
+      %div.card-header
+        %strong ブログURL
+      %ul.list-group.list-group-flush
+        %li.list-group-item= @user.url
