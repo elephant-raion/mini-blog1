@@ -1,10 +1,15 @@
 require "test_helper"
 
 class MicropostsControllerTest < ActionDispatch::IntegrationTest
-  test "should redirect create" do
-    assert_difference 'Micropost.count', 1 do
-      post microposts_path, params: { micropost: { content: "Lorem ipsum"}}
+
+  def setup
+    @micropost = microposts(:orange)
+  end
+
+  test "should redirect to new_user_sseion_url" do
+    assert_no_difference 'Micropost.count' do
+      post microposts_path, params: { micropost: { content: "Lorem ipsum" } }
     end
-    assert_redirected_to root_url
+    assert_redirected_to new_user_session_url
   end
 end
