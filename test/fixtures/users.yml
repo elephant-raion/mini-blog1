@@ -12,3 +12,9 @@ yamada:
   profile: I work for my life.
   url: https://github.com/hogehoge
 
+tanaka:
+  name: tanaka
+  email: foo@google.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'foobarfoobar') %>
+  profile: I am a musician.
+  url: http://github.com/foofoo

@@ -6,16 +6,28 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.new(
-  name: "example",
-  email: "example@example.com",
+yamada = User.new(
+  name: "yamada",
+  email: "hoge@google.com",
   password: "foobarfoobar",
   profile: "I work for my life.",
   url: "https://github.com/hogehoge"
 )
-user.save
+yamada.save
 
-50.times do
-  content = Faker::Lorem.sentence(word_count: 3)
-  user.microposts.create!(content: content)
+tanaka = User.new(
+  name: "tanaka",
+  email: "foo@google.com",
+  password: "foobarfoobar",
+  profile: "I am a musician",
+  url: "https://github.com/foofoo"
+)
+tanaka.save
+
+users = [tanaka, yamada]
+users.each do |user|
+  50.times do
+    content = Faker::Lorem.sentence(word_count: 3)
+    user.microposts.create!(content: content)
+  end  
 end
