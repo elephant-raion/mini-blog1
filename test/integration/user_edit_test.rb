@@ -1,4 +1,5 @@
 require "test_helper"
+require "application_system_test_case"
 
 class UserEditTest < ActionDispatch::IntegrationTest
   include Warden::Test::Helpers
@@ -12,31 +13,41 @@ class UserEditTest < ActionDispatch::IntegrationTest
   test "should edit user name" do
     get edit_user_registration_path
     assert_template 'devise/registrations/edit'
-    assert_select "form input#user_name[value=yamada]"
+    assert_select "form input#user_name" do
+      assert_select "[value=?]", @user.name
+    end
     name = 'nishida'
-    patch user_registration_path params: {name: name}
+    patch user_registration_url params: { user: { name: name} }
     assert_redirected_to root_path
     get edit_user_registration_path
     assert_template 'devise/registrations/edit'
-    assert_select "form input#user_name[value=#{name}]"
+    assert_select "form input#user_name" do
+      assert_select "[value=?]", name
+    end
   end
 
   test "should edit mail address" do
     get edit_user_registration_path
     assert_template 'devise/registrations/edit'
+    assert_select "form input#user_email" do
+      assert_select "[value=?]", @user.email
+    end
     email = 'tanaka@hotmail.com'
-    patch user_registration_path, params: {email: email}
+    patch user_registration_url, params: { user: { email: email} }
     assert_redirected_to root_path
     get edit_user_registration_path
     assert_template 'devise/registrations/edit'
-    assert_select "form input#user_email[value=#{email}]"
+    assert_select "form input#user_email" do
+      assert_select "[value=?]", email
+    end
   end
 
   test "should edit profile" do
     get edit_user_registration_path
     assert_template 'devise/registrations/edit'
+    assert_select "form textarea#user_profile", @user.profile
     profile = 'I will running every day.'
-    patch user_registration_path, params: {profile: profile}
+    patch user_registration_url, params: { user: { profile: profile} }
     assert_redirected_to root_path
     get edit_user_registration_path
     assert_template 'devise/registrations/edit'
@@ -46,12 +57,17 @@ class UserEditTest < ActionDispatch::IntegrationTest
   test "should edit url" do
     get edit_user_registration_path
     assert_template 'devise/registrations/edit'
+    assert_select "form input#user_url" do
+      assert_select "[value=?]", @user.url
+    end
     url = 'http://github.com/foofoohogehoge'
-    patch user_registration_path, params: {url: url}
+    patch user_registration_url, params: { user: { url: url} }
     assert_redirected_to root_path
     get edit_user_registration_path
     assert_template 'devise/registrations/edit'
-    assert_select "form input#user_url[value=#{url}]"
+    assert_select "form input#user_url" do
+      assert_select "[value=?]", url
+    end
   end
 
 
