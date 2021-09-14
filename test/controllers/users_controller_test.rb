@@ -7,7 +7,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get show" do
-    get "/users/show/#{@user.id}"
+    get user_path(@user)
     assert_template 'users/show'
   end
 end
