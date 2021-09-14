@@ -13,3 +13,10 @@ ja:
               invalid: "名前にはアルファベットだけ使える"
             profile:
               too_long: "プロファイルが長すぎる"
+        micropost:
+          attributes:
+            user_id:
+              blank: "ユーザIDは空白にできない"
+            content:
+              blank: "マイクロポストは空白にできない"
+              too_long: "マイクロポストが長すぎる"
