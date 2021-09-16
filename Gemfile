@@ -41,6 +41,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
