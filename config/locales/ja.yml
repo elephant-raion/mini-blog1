@@ -2,3 +2,21 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "名前は空白にできない"
+              too_long: "名前が長すぎる"
+              invalid: "名前にはアルファベットだけ使える"
+            profile:
+              too_long: "プロファイルが長すぎる"
+        micropost:
+          attributes:
+            user_id:
+              blank: "ユーザIDは空白にできない"
+            content:
+              blank: "マイクロポストは空白にできない"
+              too_long: "マイクロポストが長すぎる"
