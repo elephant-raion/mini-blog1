@@ -3,13 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   before do
-    @user = User.new(
-      name: "yamada",
-      email: "hoge@google.com",
-      profile: "I work for my life.",
-      url: "https://github.com/hogehoge",
-      password: "foobarfoobar"
-    )    
+    @user = FactoryBot.build(:user)
   end
 
   it "is valid with a name, email, profile, url, and password" do
@@ -18,8 +12,8 @@ RSpec.describe User, type: :model do
 
   it "is invalid without a name" do
     @user.name = nil
-    @user.valid?
-    expect(@user.errors[:name]).to include(I18n.t("activerecord.errors.models.user.attributes.name.blank"))
+    expect(@user).to be_invalid
+    expect(@user.errors).to be_of_kind(:name, :blank)
   end
 
   describe "name's length" do
@@ -33,8 +27,8 @@ RSpec.describe User, type: :model do
     context "when the length is 21 or more" do
       it "is invalid" do
         @user.name = "a"*21
-        @user.valid?
-        expect(@user.errors[:name]).to include(I18n.t("activerecord.errors.models.user.attributes.name.too_long"))
+        expect(@user).to be_invalid
+        expect(@user.errors).to be_of_kind(:name, :too_long)
       end
     end
   end
@@ -50,8 +44,8 @@ RSpec.describe User, type: :model do
     context "when the characters are not alphabet only" do
       it "is invalid" do
         @user.name = "takeshi tanaka"
-        @user.valid?
-        expect(@user.errors[:name]).to include(I18n.t("activerecord.errors.models.user.attributes.name.invalid"))
+        expect(@user).to be_invalid
+        expect(@user.errors).to be_of_kind(:name, :invalid)
       end
     end
   end
@@ -67,8 +61,8 @@ RSpec.describe User, type: :model do
     context "when the length is 201 or more" do
       it "is invalid" do
         @user.profile = "a"*201
-        @user.valid?
-        expect(@user.errors[:profile]).to include(I18n.t("activerecord.errors.models.user.attributes.profile.too_long"))
+        expect(@user).to be_invalid
+        expect(@user.errors).to be_of_kind(:profile, :too_long)
       end
     end
   end
