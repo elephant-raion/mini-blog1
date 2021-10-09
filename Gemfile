@@ -71,6 +71,7 @@ group :test do
   gem 'minitest-reporters'
   gem 'guard'
   gem 'guard-minitest'
+  gem 'launchy'
 end
 
 group :production do
