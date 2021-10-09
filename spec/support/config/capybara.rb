@@ -6,6 +6,10 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :system, js: true) do
-    driven_by :selenium_chrome_headless
+    if ENV["NO_HEADLESS"].present?
+      driven_by :selenium_chrome
+    else
+      driven_by :selenium_chrome_headless
+    end
   end
 end
