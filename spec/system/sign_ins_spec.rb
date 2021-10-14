@@ -4,13 +4,7 @@ RSpec.describe "Sign-in", type: :system do
   let(:user) { create(:user) }
 
   it "is successful", js: true do
-    visit root_path
-    click_link "Log in"
-
-    fill_in "メールアドレス", with: user.email
-    fill_in "パスワード", with: user.password
-    click_button "Log in"
-
+    sign_in_as(user)
     expect(current_path).to eq root_path
   end
 
