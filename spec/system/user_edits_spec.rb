@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "User edits", type: :system do
   let(:user) { create(:user) }
-  let(:updated_user) { create(:user, :updated) }
+  let(:updated_user) { build(:user, :updated) }
 
   context "with a password" do
     context "matched the confirmation password" do
@@ -19,15 +19,17 @@ RSpec.describe "User edits", type: :system do
         fill_in "確認用パスワード", with: updated_user.password
         
         click_button "Update"
-        
+
+        expect(page).to have_selector ".notice", text: "アカウント情報を変更しました。"
         expect(page).to have_field "名前", with: updated_user.name
         expect(page).to have_field "メールアドレス", with: updated_user.email
         expect(page).to have_field "プロフィール", with: updated_user.profile
         expect(page).to have_field "ブログURL", with: updated_user.url
-  
+        
         click_link "Log out"
+        
         sign_in_as(updated_user)
-        expect(current_path).to eq root_path
+        expect(page).to have_selector ".notice", text: "ログインしました。"
       end  
     end
     context "not matched the confirmation password" do
@@ -42,9 +44,8 @@ RSpec.describe "User edits", type: :system do
         fill_in "ブログURL", with: updated_user.url
         fill_in "パスワード", with: updated_user.password
         fill_in "確認用パスワード", with: updated_user.password + "hoge"
-  
-        click_button "Update"
         
+        click_button "Update"
         expect(page).to have_selector "#error_explanation"
       end  
     end
@@ -63,11 +64,13 @@ RSpec.describe "User edits", type: :system do
       
       click_button "Update"
       
+      expect(page).to have_selector ".notice", text: "アカウント情報を変更しました。"
       expect(page).to have_field "名前", with: updated_user.name
       expect(page).to have_field "メールアドレス", with: updated_user.email
       expect(page).to have_field "プロフィール", with: updated_user.profile
       expect(page).to have_field "ブログURL", with: updated_user.url
     end
+
     it "is failure with a invalid name", js: true do
       sign_in_as(user)
       click_link "Profile"
@@ -76,7 +79,6 @@ RSpec.describe "User edits", type: :system do
       fill_in "名前", with: "Edit tester"
       
       click_button "Update"
-      
       expect(page).to have_selector "#error_explanation"
     end
   end
