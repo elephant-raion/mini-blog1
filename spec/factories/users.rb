@@ -9,7 +9,7 @@ FactoryBot.define do
     
     trait :updated do
       name { "EditTester" }
-      email { "edit.tester@example.com" }
+      sequence(:email) {|n| "edit.tester#{n}@example.com" }
       profile { "I'm a editor." }
       url { "http://github.com/edit_tester" }
       password { "foobarfoobareditor" }
