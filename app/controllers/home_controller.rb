@@ -1,8 +1,7 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!, only: :index
 
   def index
-    @micropost = current_user.microposts.build
-    @feed_items = current_user.microposts.paginate(page: params[:page])
+    @micropost = current_user.microposts.build if user_signed_in?
+    @feed_items = Micropost.all.paginate(page: params[:page])
   end
 end
