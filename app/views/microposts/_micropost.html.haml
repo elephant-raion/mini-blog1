@@ -1,4 +1,6 @@
 %li{id: "micropost-#{micropost.id}"}
+  %span.name
+    = link_to micropost.user.name, user_path(micropost.user)
   %span.content
     = micropost.content
   %span.timestamp
