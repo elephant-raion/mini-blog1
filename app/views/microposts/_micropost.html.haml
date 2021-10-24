@@ -1,4 +1,10 @@
 %li{id: "micropost-#{micropost.id}"}
+  %span.name
+    = link_to micropost.user.name, user_path(micropost.user)
+  - if user_signed_in? && current_user.id != micropost.user.id && @following_users.exclude?(micropost.user)
+    = form_with(model: current_user.followings.build, remote: true) do |f|
+      %div= hidden_field_tag :following_user_id, micropost.user.id
+      = f.submit "Follow", class: "btn btn-primary"
   %span.content
     = micropost.content
   %span.timestamp
