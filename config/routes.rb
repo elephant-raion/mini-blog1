@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   }  
   resources :users, only: [:show]
   resources :microposts, only: [:index, :create]
+  resources :followings, only: [:create]
 end
