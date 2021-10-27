@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :microposts, only: [:index, :create]
   resources :followings, only: [:create]
   get 'following_user_microposts/index'
+  resources :likings, only: [:create]
 end
