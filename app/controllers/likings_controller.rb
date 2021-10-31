@@ -2,9 +2,8 @@ class LikingsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
   def create
-    user = User.find(params[:user_id])
-    micropost = Micropost.find(params[:micropost_id])
-    liking = micropost.likings.build(user: user)
+    liking_params = params.require(:liking).permit(:micropost_id, :user_id)
+    liking = Liking.new(liking_params)
     if liking.save
       flash[:success] = "いいねに成功しました"
     else
