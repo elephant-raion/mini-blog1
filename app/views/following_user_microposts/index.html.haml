@@ -1,4 +1,5 @@
 %h1 Following user timeline
 - if @microposts.any?
-  = render @microposts
+  - @microposts.each do |micropost|
+    = render 'microposts/micropost', micropost: micropost, following_users: @following_users
   = will_paginate @microposts, previous_label: '&lt 前へ', next_label: '次へ &gt', params: { controller: :following_user_microposts, action: :index }

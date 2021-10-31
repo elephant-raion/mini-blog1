@@ -3,7 +3,7 @@
     %div.card-header
       %div.btn-toolbar
         %h4.btn-group.mr-2= link_to micropost.user.name, user_path(micropost.user)
-        - if user_signed_in? && current_user.id != micropost.user.id && @following_users.exclude?(micropost.user)
+        - if user_signed_in? && current_user.id != micropost.user.id && following_users.exclude?(micropost.user)
           = form_with(model: current_user.followings.build, remote: true) do |f|
             %div= hidden_field_tag :following_user_id, micropost.user.id
             = f.submit "Follow", class: "btn-group mr-2 btn btn-primary btn-sm"
