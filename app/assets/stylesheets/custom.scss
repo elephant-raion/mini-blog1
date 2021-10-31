@@ -20,6 +20,12 @@ body {
 .navbar-collapse {
   justify-content: flex-end;
 }
+.container {
+  padding-top: 60px;
+}
+.card {
+  width: 100%;
+}
 
 
 /* mixins, variables, etc. */
