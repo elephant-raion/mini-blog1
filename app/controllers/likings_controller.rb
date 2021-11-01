@@ -9,6 +9,12 @@ class LikingsController < ApplicationController
     else
       flash[:failure] = "いいねに失敗しました"
     end
-    redirect_to root_url
+
+    previous_path = Rails.application.routes.recognize_path(request.referer)
+    if previous_path[:controller] == 'home' && previous_path[:action] == 'index'
+      redirect_to root_url
+    elsif previous_path[:controller] == 'following_user_microposts' && previous_path[:action] == 'index'
+      redirect_to following_user_microposts_path
+    end
   end
 end
