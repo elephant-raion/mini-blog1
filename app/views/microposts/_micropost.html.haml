@@ -7,7 +7,7 @@
           = form_with(model: current_user.followings.build(following_user: micropost.user), remote: true) do |f|
             %div= f.hidden_field :following_user_id
             = f.submit "Follow", class: "btn-group mr-2 btn btn-primary btn-sm"
-        - if user_signed_in?
+        - if user_signed_in? && micropost.users.exclude?(current_user)
           = form_with(model: micropost.likings.build(micropost: micropost, user: current_user), remote: true) do |f|
             %div= f.hidden_field :micropost_id
             %div= f.hidden_field :user_id
