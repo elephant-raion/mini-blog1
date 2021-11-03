@@ -13,7 +13,8 @@
             %div= f.hidden_field :user_id
             = f.submit "Liking", class: "btn-group mr-2 btn btn-primary btn-sm"
       %h6
-        = "#{micropost.likings.count} liking user".pluralize(micropost.likings.count)
+        = link_to "#{micropost.likings.count} liking user".pluralize(micropost.likings.count), liking_users_path(micropost_id: micropost.id)
+
         = ", Posted #{l micropost.created_at}"
     %div.card-body
       %div.card-text

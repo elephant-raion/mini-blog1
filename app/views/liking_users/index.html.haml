@@ -1,0 +1,11 @@
+%h1 Liking users to the micropost
+- if @liking_users.any?
+  - @liking_users.each do |user|
+    %div{class: "row", id: "user-#{user.id}"}
+      %div.card
+        %div.card-header
+          %h4= link_to user.name, user_path(user)
+        %div.card-body
+          %div.card-text
+            %h4= user.profile
+
