@@ -11,9 +11,10 @@
           = form_with(model: micropost.likings.build(micropost: micropost, user: current_user), remote: true) do |f|
             %div= f.hidden_field :micropost_id
             %div= f.hidden_field :user_id
-            = f.submit "Liking", class: "btn-group mr-2 btn btn-primary btn-sm" 
-        Posted
-        = l micropost.created_at
+            = f.submit "Liking", class: "btn-group mr-2 btn btn-primary btn-sm"
+      %h6
+        = "#{micropost.likings.count} liking user".pluralize(micropost.likings.count)
+        = ", Posted #{l micropost.created_at}"
     %div.card-body
       %div.card-text
         %h4= micropost.content
