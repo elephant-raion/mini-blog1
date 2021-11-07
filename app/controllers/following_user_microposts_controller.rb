@@ -3,6 +3,6 @@ class FollowingUserMicropostsController < ApplicationController
 
   def index
     @following_users = current_user.following_users
-    @microposts = Micropost.preload(:user).where(user: @following_users).order(created_at: :desc).paginate(page: params[:page])
+    @microposts = Micropost.preload(%i[user users]).where(user: @following_users).order(created_at: :desc).paginate(page: params[:page])
   end
 end

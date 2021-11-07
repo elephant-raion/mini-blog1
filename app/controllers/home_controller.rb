@@ -5,6 +5,6 @@ class HomeController < ApplicationController
       @micropost = current_user.microposts.build
       @following_users = current_user.following_users
     end
-    @microposts = Micropost.preload(:user).order(created_at: :desc).paginate(page: params[:page])
+    @microposts = Micropost.preload(%i[user users]).order(created_at: :desc).paginate(page: params[:page])
   end
 end
