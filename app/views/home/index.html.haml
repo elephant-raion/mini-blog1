@@ -1,5 +1,4 @@
-%div.row
-  %div.col-md-8
-    %section.micropost_form
-      = render 'shared/micropost_form'
-    = render 'shared/feed'
+- if user_signed_in?
+  %section.micropost_form
+    = render 'shared/micropost_form'
+= render 'shared/feed'

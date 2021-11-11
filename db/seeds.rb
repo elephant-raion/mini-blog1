@@ -24,9 +24,18 @@ tanaka = User.new(
 )
 tanaka.save
 
-users = [tanaka, yamada]
+ueda = User.new(
+  name: "ueda",
+  email: "bar@google.com",
+  password: "foobarfoobar",
+  profile: "I am a dentist",
+  url: "https://github.com/dentist"
+)
+ueda.save
+
+users = [tanaka, yamada, ueda]
 users.each do |user|
-  50.times do
+  40.times do
     content = Faker::Lorem.sentence(word_count: 3)
     user.microposts.create!(content: content)
   end  
