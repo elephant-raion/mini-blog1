@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :microposts
   has_many :followings
   has_many :following_users, through: :followings
+  has_many :comments
   validates :name, presence: true, length: {maximum: 20}, format: {with: /\A[a-zA-Z]+\z/}
   validates :profile, length: {maximum: 200}
 
