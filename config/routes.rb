@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :following_user_microposts, only: %i[index]
   resources :likings, only: [:create]
   resources :liking_users, only: %i[index]
+  resources :comments, only: %i[index]
 end
