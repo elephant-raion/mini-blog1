@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    %meta{content: 'text/html; charset=UTF-8', 'http-equiv': 'Content-Type'}
+  %body
+    %h5
+      = "#{@user.name}の投稿にコメントが書かれました。次のURLから確認できます。"
+      - url = comments_url(micropost_id: @micropost)
+      = link_to url, url
