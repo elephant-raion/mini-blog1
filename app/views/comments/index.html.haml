@@ -19,6 +19,13 @@
     %div.card-body
       %div.card-text
         %h4= @micropost.content
+- if user_signed_in?
+  %div.form-group
+    = form_with(model: current_user.comments.build(micropost: @micropost, user: current_user), remote: true) do |f|
+      %div.field= f.text_area :content, placeholder: "Compose new comment...", class: "form-control"
+      %div= f.hidden_field :micropost_id
+      %div= f.hidden_field :user_id
+      = f.submit "Comment", class: "btn btn-primary btn-block"
 - if @comments.any?
   %h2 Comments
   %ul.list-group
