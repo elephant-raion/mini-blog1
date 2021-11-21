@@ -35,7 +35,7 @@ ueda.save
 
 sugawara = User.new(
   name: "sugawara",
-  email: "toreharose@gmail.com",
+  email: "sinnet6530@yahoo.co.jp",
   password: "foobarfoobar",
   profile: "I am a developer.",
   url: "https://github.com/developer"
