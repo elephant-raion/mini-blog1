@@ -33,7 +33,16 @@ ueda = User.new(
 )
 ueda.save
 
-users = [tanaka, yamada, ueda]
+sugawara = User.new(
+  name: "sugawara",
+  email: "toreharose@gmail.com",
+  password: "foobarfoobar",
+  profile: "I am a developer.",
+  url: "https://github.com/developer"
+)
+sugawara.save
+
+users = [tanaka, yamada, ueda, sugawara]
 users.each do |user|
   40.times do
     content = Faker::Lorem.sentence(word_count: 3)
