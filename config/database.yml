@@ -22,4 +22,10 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  pool: 5
+  encoding: unicode
+  database: ImageUpload_production
+  username: ImageUpload
+  password: <%= ENV['IMAGEUPLOAD_DATABASE_PASSWORD'] %>
+
