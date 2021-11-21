@@ -1,10 +1,10 @@
 class HomeController < ApplicationController
 
   def index
-    if user_signed_in? then
+    if user_signed_in?
       @micropost = current_user.microposts.build
       @following_users = current_user.following_users
     end
-    @feed_items = Micropost.all.paginate(page: params[:page])
+    @microposts = Micropost.preload(%i[user users]).order(created_at: :desc).paginate(page: params[:page])
   end
 end

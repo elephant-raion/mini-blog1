@@ -2,8 +2,8 @@ class FollowingsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
   def create
-    user = User.find(params[:following_user_id])
-    following = current_user.followings.build(following_user: user)
+    following_params = params.require(:following).permit(:following_user_id)
+    following = current_user.followings.build(following_params)
     if following.save
       flash[:success] = "フォローに成功しました"
     else

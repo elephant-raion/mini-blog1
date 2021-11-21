@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_23_023711) do
+ActiveRecord::Schema.define(version: 2021_11_03_110422) do
 
   create_table "followings", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2021_10_23_023711) do
     t.index ["following_user_id"], name: "index_followings_on_following_user_id"
     t.index ["user_id", "following_user_id"], name: "index_followings_on_user_id_and_following_user_id", unique: true
     t.index ["user_id"], name: "index_followings_on_user_id"
+  end
+
+  create_table "likings", force: :cascade do |t|
+    t.integer "micropost_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["micropost_id", "user_id"], name: "index_likings_on_micropost_id_and_user_id", unique: true
+    t.index ["micropost_id"], name: "index_likings_on_micropost_id"
+    t.index ["user_id"], name: "index_likings_on_user_id"
   end
 
   create_table "microposts", force: :cascade do |t|
@@ -48,5 +58,7 @@ ActiveRecord::Schema.define(version: 2021_10_23_023711) do
 
   add_foreign_key "followings", "users"
   add_foreign_key "followings", "users", column: "following_user_id"
+  add_foreign_key "likings", "microposts"
+  add_foreign_key "likings", "users"
   add_foreign_key "microposts", "users"
 end

@@ -1,0 +1,4 @@
+- if @microposts.any?
+  - @microposts.each do |micropost|
+    = render 'microposts/micropost', micropost: micropost, following_users: @following_users
+  = will_paginate @microposts, previous_label: '&lt 前へ', next_label: '次へ &gt', params: { controller: :home, action: :index }

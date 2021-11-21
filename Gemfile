@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # Use faker to make test data
 gem 'faker'
 gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'will_paginate-bootstrap4'
 
 # Use devise to make authenticated users
 gem 'devise'
@@ -58,6 +58,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   #gem 'spring'
   #gem 'spring-commands-rspec'
+  gem 'bullet'
 end
 
 
