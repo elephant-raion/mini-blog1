@@ -7,7 +7,4 @@ class Micropost < ApplicationRecord
   validates :content, presence: true, length: { maximum: 140}
   mount_uploader :image, ImageUploader
 
-  def thumbnail
-    image.variant(resize: '300x300').processed
-  end
 end

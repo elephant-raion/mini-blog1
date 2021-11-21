@@ -20,4 +20,4 @@
       %div.card-text
         %h4= micropost.content
     - if micropost.image?
-      = image_tag micropost.thumbnail, class: "card-img-bottom"
+      = image_tag micropost.image.url, class: "card-img-bottom", width: 'auto', height: '50'
