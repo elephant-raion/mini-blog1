@@ -1,5 +1,5 @@
 class CommentNotifierMailer < ApplicationMailer
-  default :from => 'comment.notificator@example.com'
+  default :from => 'toreharose@gmail.com'
 
   def send_comment_email(user, micropost)
     @user = user
