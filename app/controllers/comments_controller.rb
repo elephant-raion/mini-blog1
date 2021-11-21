@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     comment = Comment.new(comment_params)
     if comment.save
       flash[:success] = "コメントの書き込みに成功しました"
-      CommentNotifierMailer.send_comment_email(current_user, comment.micropost_id).deliver
+      CommentNotifierMailer.send_comment_email(comment.user, comment.micropost_id).deliver
     else
       flash[:failure] = "コメントの書き込みに失敗しました"
     end
