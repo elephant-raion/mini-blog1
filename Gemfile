@@ -38,6 +38,7 @@ gem 'devise-i18n-views'
 
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'mini_magick'
 
 
 # Reduces boot times through caching; required in config/boot.rb
