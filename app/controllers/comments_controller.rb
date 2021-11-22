@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
+
   def index
     if user_signed_in?
       @comment = current_user.comments.build
