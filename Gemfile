@@ -62,6 +62,8 @@ group :development do
   #gem 'spring'
   #gem 'spring-commands-rspec'
   gem 'bullet'
+  gem 'rubocop'
+  gem 'rubocop-rails'
 end
 
 
