@@ -5,6 +5,7 @@ require:
 
 # 対象外
 AllCops:
+  NewCops: enable
   Exclude:
     - "vendor/**/*"
     - "bin/**"
