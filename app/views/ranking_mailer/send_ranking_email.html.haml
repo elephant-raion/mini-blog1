@@ -5,8 +5,10 @@
   - @microposts_with_likings_count.each.with_index(1) do |micropost, r|
     %div.my-2
       %div.stack-row.gap-5
-        %span.badge.bg-primary= "#{r}位"
-        %span.badge.bg-secondary= "いいね数 #{micropost.likings_count}"
+        %span.badge.bg-primary.text-white.rounded-full
+          = "#{r}位"
+        %span.badge.bg-secondary.text-white.rounded-full
+          = "いいね数 #{micropost.likings_count}"
         %span
           = link_to "posted by #{micropost.user.name}", user_url(micropost.user)
       %div.card
