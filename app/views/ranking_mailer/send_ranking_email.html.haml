@@ -1,0 +1,12 @@
+%table
+  %tr
+    %th Rank
+    %th Micropost
+    %th User
+    %th #Liking
+  - @microposts_with_likings_count.each.with_index(1) do |micropost, r|
+    %tr
+      %td= r
+      %td= micropost.content
+      %td= micropost.user.name
+      %td= micropost.likings_count

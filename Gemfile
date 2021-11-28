@@ -64,6 +64,7 @@ group :development do
   gem 'bullet'
   gem 'rubocop'
   gem 'rubocop-rails'
+  gem 'solargraph'
 end
 
 
