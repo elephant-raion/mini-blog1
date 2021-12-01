@@ -2,13 +2,15 @@
   %div.my-2
     %h1.text-center.text-primary 前日のいいね数ランキング ベスト10
   %hr
-  - @microposts_with_likings_count.each.with_index(1) do |micropost, r|
+  - @microposts_with_likings_count.each.with_index(1) do |instance, r|
+    - micropost = instance[:micropost]
+    - likings_count = instance[:likings_count]
     %div.my-2
       %div.stack-row.gap-5
         %span.badge.bg-primary.text-white.rounded-full
           = "#{r}位"
         %span.badge.bg-secondary.text-white.rounded-full
-          = "いいね数 #{micropost.likings_count}"
+          = "いいね数 #{likings_count}"
         %span
           = link_to "posted by #{micropost.user.name}", user_url(micropost.user)
       %div.card
