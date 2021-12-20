@@ -38,3 +38,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# For image uploader
+/public/uploads
+/config/cloudinary.yml
+
+.solargraph.yml

@@ -36,6 +36,11 @@ gem 'devise-i18n-views'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'carrierwave'
+gem 'cloudinary'
+
+gem 'bootstrap-email'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -59,6 +64,10 @@ group :development do
   #gem 'spring'
   #gem 'spring-commands-rspec'
   gem 'bullet'
+  gem 'rubocop'
+  gem 'rubocop-rails'
+  gem 'solargraph'
+  gem 'sgcop', github: 'SonicGarden/sgcop'
 end
 
 

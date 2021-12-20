@@ -14,8 +14,10 @@
             = f.submit "Liking", class: "btn-group mr-2 btn btn-primary btn-sm"
       %h6
         = link_to "#{micropost.likings.count} liking user".pluralize(micropost.likings.count), liking_users_path(micropost_id: micropost.id)
-
+        = link_to ", #{micropost.comments.count} comments".pluralize(micropost.comments.count), comments_path(micropost_id: micropost.id)
         = ", Posted #{l micropost.created_at}"
     %div.card-body
       %div.card-text
         %h4= micropost.content
+    - if micropost.image?
+      = image_tag micropost.image.to_s, class: "card-img-bottom h-50 w-50"

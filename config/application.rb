@@ -18,6 +18,7 @@ module MiniBlog1
     #
     config.time_zone = 'Asia/Tokyo'
     config.i18n.default_locale = :ja
+    Faker::Config.locale = :en
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.generators do |g|

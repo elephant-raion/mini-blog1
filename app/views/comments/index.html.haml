@@ -1,0 +1,38 @@
+%div{class: "row", id: "micropost-#{@micropost.id}"}
+  %div.card
+    %div.card-header
+      %div.btn-toolbar
+        %h4.btn-group.mr-2= link_to @micropost.user.name, user_path(@micropost.user)
+        - if user_signed_in? && current_user.id != @micropost.user.id && @following_users.exclude?(@micropost.user)
+          = form_with(model: current_user.followings.build(following_user: @micropost.user), remote: true) do |f|
+            %div= f.hidden_field :following_user_id
+            = f.submit "Follow", class: "btn-group mr-2 btn btn-primary btn-sm"
+        - if user_signed_in? && @micropost.users.exclude?(current_user)
+          = form_with(model: @micropost.likings.build(micropost: @micropost, user: current_user), remote: true) do |f|
+            %div= f.hidden_field :micropost_id
+            %div= f.hidden_field :user_id
+            = f.submit "Liking", class: "btn-group mr-2 btn btn-primary btn-sm"
+      %h6
+        = link_to "#{@micropost.likings.count} liking user".pluralize(@micropost.likings.count), liking_users_path(micropost_id: @micropost.id)
+        = link_to ", #{@micropost.comments.count} comments".pluralize(@micropost.comments.count), comments_path(micropost_id: @micropost.id)
+        = ", Posted #{l @micropost.created_at}"
+    %div.card-body
+      %div.card-text
+        %h4= @micropost.content
+- if user_signed_in?
+  %div.form-group
+    = form_with(model: current_user.comments.build(micropost: @micropost, user: current_user), remote: true) do |f|
+      %div.field= f.text_area :content, placeholder: "Compose new comment...", class: "form-control"
+      %div= f.hidden_field :micropost_id
+      %div= f.hidden_field :user_id
+      = f.submit "Comment", class: "btn btn-primary btn-block"
+- if @comments.any?
+  %h2 Comments
+  %ul.list-group
+  - @comments.each do |comment|
+    %li.list-group-item
+      %ul.list-group.list-group-horizontal
+        %li.list-group-item= link_to comment.user.name, user_path(comment.user)
+        %li.list-group-item= comment.content
+    = will_paginate @comments, previous_label: '&lt 前へ', next_label: '次へ &gt'
+
